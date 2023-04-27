@@ -1,0 +1,40 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "rgba(89,139,196,0.68)" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>
+<div class="container  py-5">
+    <div class="text-center ">
+        <H2 class="h1 fs-1">Whishlist</H2>
+        <p class="my-4"><a routerLink="/home" class="text-decoration-none text-muted">Home</a><span class="mx-2">></span><a
+                routerLinkActive="" class="text-decoration-none" [routerLink]="['/Products','wishlist']"
+                routerLinkActive="text-black fs-5  fw-normal">Whishlist</a>
+        </p>
+
+
+        <div class="table-responsive " style="overflow-x:auto;">
+            <table class="table  mt-5 align-middle table-hover">
+                <thead>
+                    <tr>
+                        <th class="fs-5" scope="col">Item</th>
+                        <th class="fs-5" scope="col">Price</th>
+                        <th class="fs-5" scope="col">View/Add</th>
+                        <th class="fs-5" scope="col">Remove</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of cartItems,let i=index">
+                        <th scope="row"><img [src]="product.imageCover" class="" width="80" alt=""></th>
+                        <td class="text-muted fs-5">{{product.price|currency:'E£'}}</td>
+                        <td class="text-muted fs-5"><i mat-raised-button color="accent" [routerLink]="['/Products','product',product._id]"   matTooltip="Product Details" matTooltipPosition="left"
+                            class="fa-regular cursor fa-eye"></i><span class="mx-2">|</span>     <i mat-raised-button color="accent"  (click)="Addtocart(product._id)"  matTooltip="Add to Cart" matTooltipPosition="right"
+                            class="fa-solid fa-plus cursor"></i></td>
+                        <td class="text-muted fs-5"><i (click)="RemoveFromwhishlist(product._id,i)" class="fa-regular cursor fa-circle-xmark"></i></td>
+                
+                      
+                    </tr>
+                    
+                    
+
+                </tbody>
+            </table>
+        </div>
+
+</div>

@@ -1,0 +1,42 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "rgba(89,139,196,0.68)" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>
+<div class="container  py-5">
+    <div class="text-center ">
+        <H2 class="h1 fs-1">Shopping Orders</H2>
+        <p class="my-4"><a routerLink="/home" class="text-decoration-none text-muted">Home</a><span class="mx-2">></span><a
+                routerLinkActive="" class="text-decoration-none" [routerLink]="['/Products','allorders']"
+                routerLinkActive="text-black fs-5  fw-normal">All-Orders</a>
+        </p>
+
+
+        <div class="table-responsive " style="overflow-x:auto;">
+            <table class="table  mt-5 align-middle table-hover">
+                <thead>
+                    <tr>
+                        <th class="fs-5" scope="col">Item</th>
+                        <th class="fs-5" scope="col">Price</th>
+                        <th class="fs-5" scope="col">Qty</th>
+                        <th class="fs-5" scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of cartItems,let i=index">
+                        <th scope="row"><img [src]="product.product.imageCover" class="" width="80" alt=""></th>
+                        <td class="text-muted fs-5">{{product.price|currency:'E£'}}</td>
+                        <td class="text-muted fs-5 "><div class="d-flex justify-content-center align-items-center"><span class="mx-1 text-black">{{product.count}}</span></div></td>
+                        <td class="text-muted fs-5"> {{product.price*product.count|currency:'E£'}}
+                            
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <td scope="" class="py-5"></td>
+                        <td class="text-muted fs-5"></td>
+                        <td class="text-muted fs-5 "></td>
+                        <td class="text-muted fs-5"> {{totalPrice|currency:'E£'}}
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+</div>

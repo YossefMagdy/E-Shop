@@ -1,0 +1,68 @@
+<div [ngStyle]="{
+    'height': ChangHeight ? '50px' : '0',
+    'padding': ChangHeight ? '0.5rem' : '0'
+}" class="bg-black note cursor text-white fw-bold text-center position-relative">
+    <p ><i  class="fa-solid fa-star me-2"></i>Free Delivery on orders over E£1,500. Don’t miss discount.</p>
+    <i (click)="Change()" class="fa-solid fa-xmark "></i>
+</div>
+<nav class="navbar navbar-expand-md text-center  ">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home">
+        
+        <img src="./assets/market-icon-18.png" class="Logo" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item me-3 text-end" *ngIf="islogin">
+            <a routerLink="/home" class="nav-link LINK cursor active d-flex" aria-current="page" ><div>
+              <span class="title">Home</span><i class="fa-solid fa-house"></i>
+            </div> <SPan class="smallScreen">Home</SPan></a>
+          </li>
+
+          <li class="nav-item me-3  text-end" *ngIf="islogin">
+            <a [routerLink]="['/Products','products' ]" class="nav-link cursor LINK cursor d-flex" >
+              <div>
+                <span class="title">Products</span><i class="fa-solid fa-cart-shopping" ></i>
+              </div><SPan class="smallScreen">Products</SPan></a>
+          </li>
+
+          <li class="nav-item me-3 text-end" *ngIf="islogin">
+            <a [routerLink]="['/Products','wishlist']" class="nav-link cursor LINK cursor position-relative d-flex" >
+              <div>
+                <span class="title">WishList</span><i class="fa-regular fa-heart">
+                </i>
+             <span class="badge position-absolute bg-danger top-0 rounded-circle">{{WhishlistNum}}</span>
+              </div>
+            <SPan class="smallScreen">WishList</SPan>
+          </a>
+          </li>
+
+          <li class="nav-item me-3 text-end" *ngIf="islogin">
+            <a [routerLink]="['/Products','Cart']" class="nav-link cursor LINK cursor position-relative d-flex" >
+              <div>
+                <span class="title">MyCart</span><i class="fa-solid fa-bag-shopping"></i>
+            <span class="badge position-absolute bg-danger top-0 rounded-circle">{{CartNumber}}</span>
+              </div>
+            <SPan class="smallScreen">MyCart</SPan></a>
+          </li>
+          
+
+
+          <li class="nav-item dropdown ">
+            <a  class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-user"></i> <span *ngIf="islogin" class="mx-2">{{UserName|uppercase}}</span>
+                <span *ngIf="!islogin" class="mx-2">{{toggleLogin|uppercase}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngIf="!islogin" class="p-3 d-flex"><i class="fa-solid fa-plus me-1 "></i><a class=" cursor text-decoration-none text-black" routerLink="/login">Login</a> <span class="mx-1">/</span> <a class="cursor text-black text-decoration-none" routerLink="/register">Register</a></li>
+              <li *ngIf="islogin" (click)="signOut()" class="p-3"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i><a  class="cursor text-decoration-none text-black">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

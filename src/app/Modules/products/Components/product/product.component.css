@@ -1,0 +1,98 @@
+.bars{
+    
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: auto;
+    transition: 0.5s all;
+    
+}
+
+.bars2{
+    background-color: #a5bed4;
+}
+@media (max-width:780px) {
+    .bars{
+        display: none;
+    }
+}
+.BrandHeight{
+    overflow-y: scroll;
+    height: 200px   ;
+}
+::-webkit-scrollbar
+{  
+    width: 5px;
+}
+::-webkit-scrollbar-track{
+    background-color: #e5e5e5;
+   
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #333;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.Rating i{
+    color: #fcb800;
+}
+
+.productBorder:hover{
+    /* border: 5px solid var(--main-color); */
+    outline: 2px solid var(--Heading-color);
+}
+.layer{
+    transition: 0.75s all;
+    opacity: 0;
+}
+.product:hover .layer{
+    position: absolute;
+    opacity: 1;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.422);
+
+}
+
+.Addtocart{
+    position: absolute;
+    left: 50%;
+    background-color: white;
+    transform: translate(-50%,35px);
+    opacity: 0;
+    transition: 0.5s all;
+}
+.product:hover  .Addtocart{
+    opacity: 1;
+    background-color: white;
+    transform: translate(-50%,-40px);
+} 
+
+
+.icons{
+    position: absolute;
+    opacity: 0;
+    top: 10px;
+    right: 10px;
+    transform: translateX(100px);
+    transition: 0.25s all;
+}
+.product:hover .icons{
+    opacity: 1;
+    transform: translateX(0);
+}
+.icons i{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+}
+.CategoryName{
+    color: #297bff;
+}

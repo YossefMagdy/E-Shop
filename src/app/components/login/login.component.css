@@ -1,0 +1,32 @@
+
+.social-button div:first-of-type{
+    width: 50%;
+    text-align: right;
+}
+.social-button div:last-of-type{
+    width: 50%;
+    text-align: left;
+}
+
+@media (max-width:1000px) {
+    .social-button div:first-of-type{
+        width: 100%;
+        text-align: center;
+    }
+    .social-button div:last-of-type{
+        width: 100%;
+        text-align: center;
+        margin-top: 5px
+    }
+    
+}
+@media (max-width:400px) {
+    .social-button div:first-of-type button{
+        width: 100% !important  ;
+    }
+    .social-button div:last-of-type button{
+        width: 100% !important  ;
+    
+    }
+    
+}

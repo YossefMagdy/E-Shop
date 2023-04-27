@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --main-color:#cfe9e1;
+    --Heading-color:#297bff;
+}
+.cursor{
+    cursor: pointer;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+
+background-color: #f6f9fc;
+}
+.owl-next ,.owl-prev{
+    background-color: transparent !important;
+}
+.owl-next i, .owl-prev i{
+    position: absolute !important;
+    color: #eae9ee;
+    font-size: 4rem;
+}
+.owl-prev i{
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.owl-next i{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}

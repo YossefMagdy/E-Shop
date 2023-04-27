@@ -1,0 +1,16 @@
+<div class="row">
+    <owl-carousel-o [options]="customOptions">
+       
+          <ng-template carouselSlide  *ngFor="let slide of Brands">
+              <div class="col-md-2 w-100 product" >
+                <div class=" shadow-lg">
+                    <img [src]="slide.image" class="w-100" alt="">
+                </div>
+                </div>
+                
+            </ng-template>
+    
+    </owl-carousel-o>
+    </div>
+    
+      

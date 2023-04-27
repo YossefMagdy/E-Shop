@@ -1,0 +1,12 @@
+.BackGround{
+    background-color: #f7f7f7;
+}
+.Rating i{
+    color: #fcb800;
+}
+.xcx{
+    scale: 1.1;
+}
+.owl-carousel {
+    margin-top: 20px; /* Change the value as per your requirement */
+  }

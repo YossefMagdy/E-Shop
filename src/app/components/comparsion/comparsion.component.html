@@ -1,0 +1,106 @@
+<h1 mat-dialog-title class="fw-bold"> Compare</h1>
+<div mat-dialog-content>
+<div class="row justify-content-center">
+    
+            <div  class=" col-md-5 product" >
+
+                <div class="bg-white productBorder shadow rounded-4 overflow-hidden">
+                    <div class="p-2 position-relative overflow-hidden ">
+                        <img [src]="Products[product1].imageCover" height="250" class="w-100">
+
+                        <div class="layer" [routerLink]="['/product',Products[product1]._id]">
+
+                        </div>
+                        <button (click)="Addtocart(Products[product1]._id)" class="btn fw-semibold w-75 d-block mx-auto Addtocart">Add to Cart</button>
+                        <div class="icons">
+                            <i mat-raised-button color="accent" (click)="ToggleWishList(Products[product1]._id,$event)" matTooltip="Add to Wish List"
+                                matTooltipPosition="left"
+                                class="fa-regular fa-star  d-block d-flex cursor justify-content-center align-items-center"></i>
+                       
+                            <i mat-raised-button color="accent" [routerLink]="['/product',Products[product1]._id]"    matTooltip="Quick View" matTooltipPosition="left"
+                                class="fa-regular fa-eye cursor mt-3  d-block d-flex justify-content-center align-items-center"></i>
+                        </div>
+                    </div>
+                    <div class="py-2 px-3">
+                        <h3 class="h6 fw-bold fs-4 CategoryName">{{Products[product1].category.name}}</h3>
+                        <h4 class="h6 fw-bold">{{Products[product1].title.split(" ").slice(0,2).join('')}}</h4>
+                        <div class="textHeight">
+                            <p>{{Products[product1].description}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>{{Products[product1].price|currency:'E£'}}</p>
+                            <p class="Rating">
+                                <i *ngIf="Products[product1].ratingsAverage>1" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>2" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>2 && Products[product1].ratingsAverage<3"
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>=3" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>3 && Products[product1].ratingsAverage<4"
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>4" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>4 && Products[product1].ratingsAverage<5"
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="Products[product1].ratingsAverage>=5" class="fa-solid fa-star"></i>
+                                {{Products[product1].ratingsAverage}}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div  class=" col-md-5 product" >
+
+                <div class="bg-white productBorder shadow rounded-4 overflow-hidden">
+                    <div class="p-2 position-relative overflow-hidden ">
+                        <img [src]="Products[product2].imageCover" height="250" class="w-100">
+
+                        <div class="layer" [routerLink]="['/product',Products[product2]._id]">
+
+                        </div>
+                        <button (click)="Addtocart(Products[product2]._id)" class="btn fw-semibold w-75 d-block mx-auto Addtocart">Add to Cart</button>
+                        <div class="icons">
+                            <i mat-raised-button color="accent" (click)="ToggleWishList(Products[product2]._id,$event)" matTooltip="Add to Wish List"
+                                matTooltipPosition="left"
+                                class="fa-regular fa-star  d-block d-flex cursor justify-content-center align-items-center"></i>
+                           
+                            <i mat-raised-button color="accent" [routerLink]="['/product',Products[product2]._id]"    matTooltip="Quick View" matTooltipPosition="left"
+                                class="fa-regular fa-eye cursor  mt-3 d-block d-flex justify-content-center align-items-center"></i>
+                        </div>
+                    </div>
+                    <div class="py-2 px-3">
+                        <h3 class="h6 fw-bold fs-4 CategoryName">{{Products[product2].category.name}}</h3>
+                        <h4 class="h6 fw-bold">{{Products[product2].title.split(" ").slice(0,2).join('')}}</h4>
+                        <div class="textHeight">
+
+                            <p>{{Products[product2].description}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>{{Products[product2].price|currency:'E£'}}</p>
+                            <p class="Rating">
+                                <i *ngIf="Products[product2].ratingsAverage>1" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>2" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>2 && Products[product2].ratingsAverage<3"
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>=3" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>3 && Products[product2].ratingsAverage<4"
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>4" class="fa-solid fa-star"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>4 && Products[product2].ratingsAverage<5"
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="Products[product2].ratingsAverage>=5" class="fa-solid fa-star"></i>
+                                {{Products[product2].ratingsAverage}}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        
+  
+
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-dark">Close</button>
+</div>

@@ -1,0 +1,183 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "rgba(89,139,196,0.68)" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>
+<div class="container mt-4 mb-5">
+    
+    <div class="row bg-white shadow py-3 rounded-4 align-items-center">
+        <div class="col-md-4 text-md-start text-center">
+            <h3 class="fw-bold fs-3">All Products</h3>
+            <p class="fs-5 ">{{products.length}} results found</p>
+        </div>
+        <div class="col-md-4 mt-md-0 mt-3">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="me-3">
+                    <p class="fs-5">Sort By:</p>
+                </div>
+                <div>
+                    <select (change)="sortProductByPrice($event)" class="form-select w-75" aria-label="Default select example">
+
+                        <option selected  value="1">None</option>
+                        <option   value="low">Low Price</option>
+                        <option   value="High">High Price</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div  (click)="change()" class="col-md-4 cursor">
+            <i [ngClass]="check ? 'bars2' : ''" class="fa-solid bars fa-bars fa-2x"></i>
+        </div>
+    </div>
+    <div class="row mt-4 ">
+        <div [ngClass]="SmallScreens ? 'mb-3'  : 'col-xl-2 col-lg-3 col-md-4'" class=" bg-white rounded-4 shadow pt-2 pb-4">
+            <h3 [ngClass]="SmallScreens ? 'text-center'  : ''" class="fs-4 fw-semibold mt-3 ">Categories</h3>
+          <div  [ngClass]="SmallScreens ? 'd-flex align-items-center flex-wrap justify-content-center': ''">
+            <div [ngClass]="SmallScreens ? 'mx-2 w-100 justify-content-center d-flex' :'mt-2 ' " class="form-check ">
+                <input class="form-check-input" (click)="GetCategory($event)" type="radio" name="Category" value="All" id="All">
+                <label class="form-check-label fs-5 fw-normal" for="All">
+                    All
+                </label>
+            </div>
+            <div [ngClass]="SmallScreens ? 'mx-2 w-100 justify-content-center d-flex mt-2 ' :'mt-3' " class="form-check ">
+                <input class="form-check-input" (click)="GetCategory($event)" type="radio" name="Category" value="Electronics" id="Electronics">
+                <label class="form-check-label fs-5 fw-normal" for="Electronics">
+                    Electronics
+                </label>
+            </div>
+            <div [ngClass]="SmallScreens ? 'mx-2 w-100 justify-content-center d-flex mt-2 ' :'mt-3' " class="form-check ">
+                <input class="form-check-input"  (click)="GetCategory($event)" type="radio" name="Category" value="Men's Fashion" id="Men's Fashion">
+                <label class="form-check-label fs-5 fw-normal" for="Men's Fashion">
+                    Men's Fashion
+                </label>
+            </div>
+            <div [ngClass]="SmallScreens ? 'mx-2 w-100 justify-content-center d-flex mt-2 ' :'mt-3' " class="form-check ">
+                <input class="form-check-input" (click)="GetCategory($event)" type="radio" name="Category" value="Women's Fashion" id="Women's Fashion">
+                <label class="form-check-label fs-5 fw-normal" for="Women's Fashion">
+                    Women's Fashion
+                </label>
+            </div>
+         <div  *ngIf="!SmallScreens">
+            <h3 class="fs-4 mt-3 fw-semibold">Brands</h3>
+            <div class="BrandHeight ">
+                <div class="form-check mt-3 mx-1">
+                    <input class="form-check-input" (click)="Getbrand($event)" type="radio" name="BrandName" value=""
+                        id="all1">
+                    <label class="form-check-label fs-5 fw-normal" for="all1">
+                        All
+                    </label>
+                </div>
+                <div class="form-check mt-3 mx-1" *ngFor="let Brand of Brand">
+                    <input class="form-check-input" (click)="Getbrand($event)" type="radio" name="BrandName" [value]="Brand.name"
+                        [id]="Brand.name.split(' ').slice(0,1)">
+                    <label class="form-check-label fs-5 fw-normal" [for]="Brand.name.split(' ').slice(0,1)">
+                        {{Brand.name}}
+                    </label>
+                </div>
+            </div>
+         </div>
+            <div *ngIf="!SmallScreens">
+                <h3 class="fs-4 mt-3 fw-semibold">Rating</h3>
+            <div class="Rating">
+                <div class="form-check mt-2">
+                    <input class="form-check-input" (click)="GetRate($event)" type="radio" name="Rate" value="" id="All2">
+                    <label class="form-check-label fs-5 fw-normal" for="All2">
+                        All
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" (click)="GetRate($event)" name="Rate" type="radio" value="5" id="FiveStart">
+                    <label class="form-check-label fs-5 fw-normal" for="FiveStart">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" name="Rate" (click)="GetRate($event)" type="radio" value="4" id="fourStart">
+                    <label class="form-check-label fs-5 fw-normal" for="fourStart">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" name="Rate" (click)="GetRate($event)" type="radio" value="3" id="threeStart">
+                    <label class="form-check-label fs-5 fw-normal" for="threeStart">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" name="Rate" (click)="GetRate($event)" type="radio" value="2" id="twoStart">
+                    <label class="form-check-label fs-5 fw-normal" for="twoStart">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" (click)="GetRate($event)" name="Rate" type="radio" value="1" id="oneStart">
+                    <label class="form-check-label fs-5 fw-normal" for="oneStart">
+                        <i class="fa-solid fa-star"></i>
+                    </label>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-10 col-lg-9 col-md-8">
+            <div [ngClass]="check ? ' justify-content-center' :''" class="row g-3">
+                <div [ngClass]="check ? 'col-xl-5 col-lg-6' :'col-xl-3 col-lg-4 col-md-6'" class="  product" *ngFor="let slide of products|Category:SearchByCategory|brand:SearchBybrands|rating:SearchByRating|paginate: { itemsPerPage: Items, currentPage: p };let i=index">
+
+                    <div class="bg-white productBorder shadow rounded-4 overflow-hidden">
+                        <div class="p-2 position-relative overflow-hidden ">
+                            <img [src]="slide.imageCover" height="250" class="w-100">
+
+                            <div class="layer" [routerLink]="['/Products','product',slide._id]">
+
+                            </div>
+                            <button (click)="Addtocart(slide._id)" class="btn fw-semibold w-75 d-block mx-auto Addtocart">Add to Cart</button>
+                            <div class="icons">
+                                <i mat-raised-button color="accent" (click)="ToggleWishList(slide._id,$event)" matTooltip="Add to Wish List"
+                                    matTooltipPosition="left"
+                                    class="fa-regular fa-star  d-block d-flex cursor justify-content-center align-items-center"></i>
+                                <i mat-raised-button color="accent" [routerLink]="['/Products','product',slide._id]"    matTooltip="Quick View" matTooltipPosition="left"
+                                    class="fa-regular fa-eye cursor mt-3  d-block d-flex justify-content-center align-items-center"></i>
+                            </div>
+                        </div>
+                        <div class="py-2 px-3">
+                            <h3 class="h6 fw-bold fs-4 CategoryName">{{slide.category.name}}</h3>
+                            <h4 class="h6 fw-bold">{{slide.title.split(" ").slice(0,2).join('')}}</h4>
+                            <div class="d-flex justify-content-between">
+                                <p>{{slide.price|currency:'E£'}}</p>
+                                <p class="Rating">
+                                    <i *ngIf="slide.ratingsAverage>1" class="fa-solid fa-star"></i>
+                                    <i *ngIf="slide.ratingsAverage>2" class="fa-solid fa-star"></i>
+                                    <i *ngIf="slide.ratingsAverage>2 && slide.ratingsAverage<3"
+                                        class="fa-solid fa-star-half-stroke"></i>
+                                    <i *ngIf="slide.ratingsAverage>=3" class="fa-solid fa-star"></i>
+                                    <i *ngIf="slide.ratingsAverage>3 && slide.ratingsAverage<4"
+                                        class="fa-solid fa-star-half-stroke"></i>
+                                    <i *ngIf="slide.ratingsAverage>4" class="fa-solid fa-star"></i>
+                                    <i *ngIf="slide.ratingsAverage>4 && slide.ratingsAverage<5"
+                                        class="fa-solid fa-star-half-stroke"></i>
+                                    <i *ngIf="slide.ratingsAverage>=5" class="fa-solid fa-star"></i>
+                                    {{slide.ratingsAverage}}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="p = $event"
+              >
+              </pagination-controls>
+            </div>
+        </div>
+
+    </div>

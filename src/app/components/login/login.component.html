@@ -1,0 +1,50 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "rgba(89,139,196,0.68)" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>
+
+
+<div class="container d-flex justify-content-center mt-5 pb-5">
+    <div class="text-center w-75">
+        <h3 class="h1 fs-2 ">Customer Login</h3>
+        <p class="mt-3"><a class="text-decoration-none text-muted" routerLink="/home">Home</a><span
+                class="mx-2">></span><a routerLinkActive="" class="text-decoration-none" routerLink="/login"
+                routerLinkActive="text-black fs-5  fw-normal">Customer Login</a>
+        </p>
+
+  
+        
+        <form  action="" class="mt-3" [formGroup]="LoginForm" (ngSubmit)="handleLogin()">
+            <div class="row text-start mt-4">
+                <div class="col-md-6">
+                    <h3 class="mt-2">Registered Customers</h3>
+                    <p class="my-3 text-muted">If you have an account, sign in with your email address.</p>
+                    <div *ngIf="Error.length>0" class="alert alert-danger">
+                        <p>{{Error}}</p>
+                    </div>  
+                    <label class="text-muted my-3" for="Email">Email</label>
+                    <input type="text" formControlName="email" id="Email" class="form-control">
+                    <div *ngIf="LoginForm.get('email')?.errors && LoginForm.get('email')?.touched" class="alert alert-danger">
+                        <p *ngIf="LoginForm.get('email')?.getError('required')">Email Is Required</p>
+                        <p *ngIf="LoginForm.get('email')?.getError('email')">Email Is in-valid</p>
+                    </div>
+                    <label class="text-muted my-3" for="Password">Password</label>
+                    <input formControlName="password" [type]="Showpass ? 'text' : 'password'" id="Password" class="form-control">
+                    <div class="mt-3 text-end">
+                        <input (click)="toggleShow()" type="checkbox" class="me-2" name="" id="ShowPassword">
+                        <label for="ShowPassword">Show Password</label>
+                    </div>
+                    <div  class="mt-3">
+                        <re-captcha (resolved)="resolved($event)" siteKey="6LdSorwlAAAAABNgpp7NdYCT1gmqhlmKfTkgOLg7"></re-captcha>
+                    </div>
+
+                    <button [disabled]="!Human || LoginForm.invalid" type="submit" class="btn btn-dark w-100 mt-3"><i *ngIf="login" class="fa-solid fa-spinner fa-spin-pulse"></i><span *ngIf="!login">Sign In</span></button>
+                    <a routerLink="/ForgetPassword" class="text-end  d-block text-black mt-2 cursor">Forget Your Password ?</a>
+                </div>
+                <div class="col-md-6">
+                    <h3>Create an Account</h3>
+                    <p class="mt-3">Sign up for early Sale access plus tailored new arrivals, trends and promotions. To
+                        opt out, click unsubscribe in our emails.</p>
+                    <button class="btn btn-dark  mt-3" routerLink="/register">Create an Account</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

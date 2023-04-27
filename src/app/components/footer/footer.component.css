@@ -1,0 +1,43 @@
+.InputICON{
+    padding: 10px;
+    background: white;
+    color: black;
+    min-width: 50px;
+    text-align: center;
+}
+footer{
+    background-color: var(--main-color);
+}
+.arrow-right{
+    padding: 10px;
+    background: white;
+    color: black;
+    min-width: 50px;
+    text-align: center;
+    transition: all 1s;
+}
+.arrow-right:hover{
+    background: black;
+    color: white;
+}
+.col-md-3:not(:nth-of-type(5)){
+    border-color: #ccc !important;
+    border-left:1px solid ;
+}
+.borderTop{
+    border-color: #ccc !important;
+}
+h3{
+    color: black;
+}
+@media (max-width:768px){
+    .col-md-3:not(:nth-of-type(5)){
+        border-left: none;
+        border-bottom: 1px solid;
+    }
+}
+
+
+.EmailInput:focus{
+    box-shadow: none;
+}

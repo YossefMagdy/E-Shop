@@ -1,0 +1,31 @@
+<h1 mat-dialog-title class="fw-bold"> Shipping  Address</h1>
+<div mat-dialog-content>
+    <form action="" [formGroup]="ShippingAddress" (ngSubmit)="HandlePayment()">
+        <Label>Name</Label>
+        <input formControlName="details" class="form-control" type="text" name="" id="">
+        <div class="alert alert-danger"
+            *ngIf="ShippingAddress.get('details')?.errors && ShippingAddress.get('details')?.touched">
+            <p *ngIf="ShippingAddress.get('details')?.getError('minlength')">Name MinLength is 3</p>
+            <p *ngIf="ShippingAddress.get('details')?.getError('required')">Name Required</p>
+        </div>
+        <Label>Phone</Label>
+        <input formControlName="phone" class="form-control" type="tel" name="" id="">
+        <div class="alert alert-danger"
+            *ngIf="ShippingAddress.get('phone')?.errors && ShippingAddress.get('phone')?.touched">
+            <p *ngIf="ShippingAddress.get('phone')?.getError('pattern')">phone in-valid</p>
+            <p *ngIf="ShippingAddress.get('phone')?.getError('required')">phone Required</p>
+        </div>
+        <Label>City</Label>
+        <input formControlName="city" class="form-control" type="text" name="" id="">
+        <div class="alert alert-danger"
+            *ngIf="ShippingAddress.get('city')?.errors && ShippingAddress.get('city')?.touched">
+            <p *ngIf="ShippingAddress.get('city')?.getError('required')">City Required</p>
+        </div>
+
+        <button (click)="HandlePayment()" type="submit" class="btn btn-info mt-3"><i *ngIf="login" class="fa-solid fa-spinner fa-spin-pulse text-white"></i><span *ngIf="!login">Submit</span></button>
+    </form>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-dark">Close</button>
+</div>

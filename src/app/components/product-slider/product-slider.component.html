@@ -1,0 +1,48 @@
+<div class="row owl-carousel position-relative">
+<owl-carousel-o [options]="customOptions">
+   
+      <ng-template carouselSlide *ngFor="let slide of products;let i=index">
+          <div class="w-100   py-2">
+       
+                <div class="bg-white shadow-sm product rounded-4 overflow-hidden" >
+                    <div class="p-2 position-relative overflow-hidden " >
+                        <img [src]="slide.imageCover" height="350" class="w-100"  >
+    
+                        <div class="layer" [routerLink]="['/Products','product',slide._id]">
+                            
+                        </div>
+                        <button (click)="Addtocart(slide._id)" class="btn fw-semibold w-75 d-block mx-auto Addtocart">Add to Cart</button>
+                        <div class="icons"> 
+                            <i mat-raised-button color="accent" (click)="ToggleWishList(slide._id,$event,i)"  matTooltip="Add to Wish List" matTooltipPosition="left" class="fa-regular fa-star  d-block d-flex cursor justify-content-center align-items-center"></i>
+
+                            <i mat-raised-button color="accent" (click)="AddtoComparison(i)" matTooltip="Add to Compare" matTooltipPosition="left" class="fa-solid fa-right-left   d-block my-3 d-flex cursor justify-content-center align-items-center"></i>
+
+                            <i  [routerLink]="['/Products','product',slide._id]"  mat-raised-button color="accent" matTooltip="Quick View"     matTooltipPosition="left" class="fa-regular fa-eye cursor   d-block d-flex justify-content-center align-items-center"></i>
+                        </div>
+                    </div>
+                    <div class="py-2 px-3" >
+                            <h3 class="h6 fw-bold cursor" [routerLink]="['/Products','product',slide._id]">{{slide.title.split(" ").slice(0,2).join('')}}</h3>
+                           <div class="d-flex justify-content-between">
+                            <p>{{slide.price|currency:'E£'}}</p>
+                            <p class="Rating">
+                                <i *ngIf="slide.ratingsAverage>1" class="fa-solid fa-star"></i> 
+                                <i *ngIf="slide.ratingsAverage>2" class="fa-solid fa-star"></i> 
+                                <i *ngIf="slide.ratingsAverage>2 && slide.ratingsAverage<3" class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="slide.ratingsAverage>=3" class="fa-solid fa-star"></i> 
+                                <i *ngIf="slide.ratingsAverage>3 && slide.ratingsAverage<4" class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="slide.ratingsAverage>4" class="fa-solid fa-star"></i> 
+                                <i *ngIf="slide.ratingsAverage>4 && slide.ratingsAverage<5" class="fa-solid fa-star-half-stroke"></i>
+                                <i *ngIf="slide.ratingsAverage>=5" class="fa-solid fa-star"></i> 
+                                {{slide.ratingsAverage}}
+                            </p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+        </ng-template>
+
+</owl-carousel-o>
+</div>
+
