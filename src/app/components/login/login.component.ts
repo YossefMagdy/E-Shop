@@ -58,8 +58,8 @@ export class LoginComponent {
   }
 
   LoginForm=this._fb.group({
-    email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9@-_$%#@!*.]{8,15}$/)]]
+    email:['demo@gmail.com',[Validators.required,Validators.email]],
+    password:['Y@123456',[Validators.required,Validators.pattern(/^[a-zA-Z0-9@-_$%#@!*.]{8,15}$/)]]
   })
 
   handleLogin(){
